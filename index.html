@@ -1,0 +1,2976 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>A Message Just For You</title>
+
+    <!-- GOOGLE FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Playfair Display', serif;
+
+            background:
+                radial-gradient(
+                    circle at top,
+                    #4b1266 0%,
+                    #26052f 45%,
+                    #100014 100%
+                );
+
+            color: white;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+
+        /* ================= NAVBAR ================= */
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+
+            width: 100%;
+
+            padding: 18px 0;
+
+            z-index: 1000;
+
+            background: rgba(20, 0, 30, 0.75);
+
+            backdrop-filter: blur(10px);
+
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+
+        .nav-buttons a {
+            text-decoration: none;
+
+            color: white;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #713b88,
+                    #351541
+                );
+
+            padding: 12px 24px;
+
+            border-radius: 12px;
+
+            font-weight: bold;
+
+            border: 1px solid rgba(255,255,255,0.3);
+
+            box-shadow:
+                0 5px 0 #1b0922,
+                0 8px 15px rgba(0,0,0,0.4);
+
+            transition: 0.3s;
+        }
+
+
+        .nav-buttons a:hover {
+            transform: translateY(-3px);
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #8d4ca8,
+                    #4b1c5d
+                );
+
+            box-shadow:
+                0 7px 0 #1b0922,
+                0 12px 20px rgba(0,0,0,0.5);
+        }
+
+
+        .nav-buttons a:active {
+            transform: translateY(3px);
+
+            box-shadow:
+                0 2px 0 #1b0922;
+        }
+
+
+        /* ================= SECTIONS ================= */
+
+        section {
+            min-height: 100vh;
+
+            padding:
+                130px 30px 80px;
+
+            text-align: center;
+
+            position: relative;
+        }
+
+
+        h1 {
+            font-size: 45px;
+
+            margin-bottom: 20px;
+
+            text-shadow:
+                0 4px 15px rgba(0,0,0,0.5);
+        }
+
+
+        h2 {
+            font-size: 32px;
+
+            margin-bottom: 20px;
+        }
+
+
+        p {
+            font-size: 18px;
+
+            line-height: 1.6;
+        }
+
+
+        /* ================= HOME ================= */
+
+        #home {
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            overflow: hidden;
+        }
+
+
+        .home-content {
+            max-width: 900px;
+
+            text-align: center;
+
+            position: relative;
+
+            z-index: 5;
+        }
+
+
+        .home-content h1 {
+            font-size: 58px;
+
+            font-weight: 500;
+
+            letter-spacing: 4px;
+
+            margin-bottom: 15px;
+
+            text-shadow:
+                0 5px 20px rgba(0,0,0,0.6);
+        }
+
+
+        .home-content h2 {
+            font-size: 55px;
+
+            font-weight: 700;
+
+            letter-spacing: 8px;
+
+            margin-top: 10px;
+
+            text-shadow:
+                0 5px 20px rgba(0,0,0,0.7);
+        }
+
+
+        /* ================= CUTE PLUSHIES ================= */
+
+        .plushie {
+            position: absolute;
+
+            width: 125px;
+            height: 125px;
+
+            z-index: 3;
+
+            animation:
+                plushieFloat 4s ease-in-out infinite;
+
+            filter:
+                drop-shadow(0 12px 15px rgba(0,0,0,0.35));
+        }
+
+
+        /* LEFT PLUSHIE */
+
+        .plushie.left {
+            left: 6%;
+            top: 35%;
+        }
+
+
+        /* RIGHT PLUSHIE */
+
+        .plushie.right {
+            right: 6%;
+            top: 48%;
+
+            animation-delay: 1.5s;
+        }
+
+
+        /* ================= TEDDY PLUSHIE DESIGN ================= */
+
+        .bear-head {
+            position: absolute;
+
+            width: 85px;
+            height: 78px;
+
+            left: 20px;
+            top: 20px;
+
+            background: #c58b68;
+
+            border-radius: 48% 48% 45% 45%;
+
+            border: 3px solid rgba(70,35,25,0.4);
+        }
+
+
+        .bear-ear {
+            position: absolute;
+
+            width: 30px;
+            height: 30px;
+
+            background: #c58b68;
+
+            border-radius: 50%;
+
+            top: 9px;
+
+            border: 3px solid rgba(70,35,25,0.4);
+        }
+
+
+        .bear-ear.left-ear {
+            left: 17px;
+        }
+
+
+        .bear-ear.right-ear {
+            right: 17px;
+        }
+
+
+        .bear-inner-ear {
+            position: absolute;
+
+            width: 16px;
+            height: 16px;
+
+            background: #e8b3a0;
+
+            border-radius: 50%;
+
+            top: 6px;
+            left: 5px;
+        }
+
+
+        .bear-eye {
+            position: absolute;
+
+            width: 9px;
+            height: 12px;
+
+            background: #23151a;
+
+            border-radius: 50%;
+
+            top: 30px;
+        }
+
+
+        .bear-eye.left-eye {
+            left: 24px;
+        }
+
+
+        .bear-eye.right-eye {
+            right: 24px;
+        }
+
+
+        .bear-nose {
+            position: absolute;
+
+            width: 17px;
+            height: 13px;
+
+            background: #4c2530;
+
+            border-radius: 50%;
+
+            left: 34px;
+            top: 43px;
+        }
+
+
+        .bear-mouth {
+            position: absolute;
+
+            width: 18px;
+            height: 9px;
+
+            left: 33px;
+            top: 53px;
+
+            border-bottom:
+                3px solid #4c2530;
+
+            border-radius: 0 0 50% 50%;
+        }
+
+
+        .bear-body {
+            position: absolute;
+
+            width: 72px;
+            height: 65px;
+
+            left: 27px;
+            top: 83px;
+
+            background: #c58b68;
+
+            border-radius:
+                45% 45% 35% 35%;
+        }
+
+
+        .bear-belly {
+            position: absolute;
+
+            width: 42px;
+            height: 35px;
+
+            left: 15px;
+            top: 15px;
+
+            background: #e4b394;
+
+            border-radius: 50%;
+        }
+
+
+        .bear-arm {
+            position: absolute;
+
+            width: 26px;
+            height: 45px;
+
+            background: #c58b68;
+
+            border-radius: 50%;
+
+            top: 90px;
+        }
+
+
+        .bear-arm.left-arm {
+            left: 8px;
+
+            transform: rotate(25deg);
+        }
+
+
+        .bear-arm.right-arm {
+            right: 8px;
+
+            transform: rotate(-25deg);
+        }
+
+
+        .bear-leg {
+            position: absolute;
+
+            width: 30px;
+            height: 27px;
+
+            background: #c58b68;
+
+            border-radius: 50%;
+
+            top: 135px;
+        }
+
+
+        .bear-leg.left-leg {
+            left: 28px;
+        }
+
+
+        .bear-leg.right-leg {
+            right: 28px;
+        }
+
+
+        /* SECOND PLUSHIE = PINK VERSION */
+
+        .plushie.pink .bear-head,
+        .plushie.pink .bear-ear,
+        .plushie.pink .bear-body,
+        .plushie.pink .bear-arm,
+        .plushie.pink .bear-leg {
+            background: #e58db3;
+        }
+
+
+        .plushie.pink .bear-inner-ear {
+            background: #ffc8df;
+        }
+
+
+        .plushie.pink .bear-belly {
+            background: #f7c1d6;
+        }
+
+
+        /* ================= PLUSHIE HEART ================= */
+
+        .plushie-heart {
+            position: absolute;
+
+            top: 0;
+            right: 0;
+
+            font-size: 28px;
+
+            animation:
+                heartBeat 1.5s ease-in-out infinite;
+        }
+
+
+        @keyframes plushieFloat {
+
+            0% {
+                transform: translateY(0) rotate(-3deg);
+            }
+
+            50% {
+                transform: translateY(-15px) rotate(3deg);
+            }
+
+            100% {
+                transform: translateY(0) rotate(-3deg);
+            }
+        }
+
+
+        @keyframes heartBeat {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+        }
+
+
+        /* ================= PICTURE ================= */
+
+        #picture {
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+        }
+
+
+        .picture-subtitle {
+            margin-bottom: 20px;
+
+            opacity: 0.9;
+        }
+
+
+        .orbit-container {
+
+            position: relative;
+
+            width: 500px;
+
+            height: 500px;
+
+            margin: 20px auto;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+        }
+
+
+        .orbit {
+
+            position: absolute;
+
+            width: 390px;
+
+            height: 390px;
+
+            border:
+                5px solid white;
+
+            border-radius: 50%;
+
+            box-shadow:
+                0 0 15px rgba(255,255,255,0.5);
+
+            z-index: 1;
+        }
+
+
+        .rotating-pictures {
+
+            position: absolute;
+
+            width: 390px;
+
+            height: 390px;
+
+            border-radius: 50%;
+
+            animation:
+                orbitRotation
+                15s
+                linear
+                infinite;
+
+            z-index: 5;
+        }
+
+
+        .picture {
+
+            position: absolute;
+
+            width: 105px;
+
+            height: 105px;
+
+            object-fit: cover;
+
+            border-radius: 12px;
+
+            border:
+                5px solid white;
+
+            background: #222;
+
+            box-shadow:
+                0 8px 20px rgba(0,0,0,0.6),
+                0 0 15px rgba(255,255,255,0.3);
+        }
+
+
+        .pic1 {
+            top: -52px;
+            left: 142px;
+        }
+
+
+        .pic2 {
+            bottom: 18px;
+            right: -48px;
+        }
+
+
+        .pic3 {
+            bottom: 18px;
+            left: -48px;
+        }
+
+
+        .center-video {
+
+            position: absolute;
+
+            width: 175px;
+
+            height: 175px;
+
+            border-radius: 20px;
+
+            overflow: hidden;
+
+            background: black;
+
+            border:
+                3px solid white;
+
+            z-index: 10;
+
+            box-shadow:
+                0 10px 30px rgba(0,0,0,0.7),
+                0 0 20px rgba(255,255,255,0.2);
+        }
+
+
+        .center-video video {
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+
+            display: block;
+        }
+
+
+        @keyframes orbitRotation {
+
+            from {
+                transform:
+                    rotate(0deg);
+            }
+
+            to {
+                transform:
+                    rotate(360deg);
+            }
+        }
+
+
+        /* ================= CARDS ================= */
+
+        .card-container {
+
+            max-width: 1000px;
+
+            margin: 40px auto;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(220px, 1fr));
+
+            gap: 25px;
+        }
+
+
+        .card {
+
+            min-height: 190px;
+
+            padding: 30px 20px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            align-items: center;
+
+            background:
+                rgba(255,255,255,0.08);
+
+            border:
+                1px solid rgba(255,255,255,0.25);
+
+            border-radius: 20px;
+
+            box-shadow:
+                0 10px 30px rgba(0,0,0,0.35);
+
+            transition: 0.3s;
+        }
+
+
+        .card:hover {
+
+            transform:
+                translateY(-8px)
+                scale(1.02);
+
+            background:
+                rgba(255,255,255,0.13);
+
+            box-shadow:
+                0 15px 35px rgba(0,0,0,0.5);
+        }
+
+
+        .card-icon {
+
+            font-size: 45px;
+
+            margin-bottom: 15px;
+        }
+
+
+        .card h3 {
+
+            font-size: 22px;
+
+            margin-bottom: 10px;
+        }
+
+
+        .card p {
+
+            font-size: 16px;
+        }
+
+
+        /* ================= FOOD ================= */
+
+        #food {
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            align-items: center;
+        }
+
+
+        .food-subtitle {
+
+            margin-bottom: 25px;
+        }
+
+
+        /* ================= HOBBIES ================= */
+
+        #hobbies {
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            align-items: center;
+        }
+
+
+        .hobbies-subtitle {
+
+            margin-bottom: 25px;
+        }
+
+        /* ================= MUSIC ================= */
+
+        #music {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .music-subtitle {
+            margin-bottom: 25px;
+        }
+
+        .music-card {
+            width: 90%;
+            max-width: 550px;
+            padding: 35px 25px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.25);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+        }
+
+        .music-icon {
+            font-size: 55px;
+            margin-bottom: 15px;
+        }
+
+        .music-card h2 {
+            margin-bottom: 10px;
+        }
+
+        .music-card p {
+            margin-bottom: 20px;
+        }
+
+        .music-card audio {
+            width: 100%;
+        }
+
+        /* ================= REASONS ================= */
+
+        #reasons {
+
+            min-height: auto;
+
+            padding-bottom: 100px;
+        }
+
+
+        .reasons-subtitle {
+
+            margin-bottom: 40px;
+        }
+
+
+        .reasons-container {
+
+            max-width: 850px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 15px;
+
+            text-align: left;
+        }
+
+
+        .reason {
+
+            padding: 18px 20px;
+
+            background:
+                rgba(255,255,255,0.08);
+
+            border:
+                1px solid rgba(255,255,255,0.2);
+
+            border-radius: 15px;
+
+            box-shadow:
+                0 6px 20px rgba(0,0,0,0.25);
+
+            transition: 0.3s;
+        }
+
+
+        .reason:hover {
+
+            transform:
+                translateX(5px);
+
+            background:
+                rgba(255,255,255,0.13);
+        }
+
+
+        .reason-number {
+
+            font-weight: bold;
+
+            margin-right: 8px;
+        }
+
+
+        /* ================= FOOTER ================= */
+
+        footer {
+
+            text-align: center;
+
+            padding: 25px;
+
+            background:
+                rgba(0,0,0,0.3);
+        }
+
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 700px) {
+
+            .nav-buttons {
+                gap: 7px;
+            }
+
+
+            .nav-buttons a {
+                padding:
+                    9px 13px;
+
+                font-size: 13px;
+            }
+
+
+            section {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+
+
+            .home-content h1 {
+                font-size: 36px;
+                letter-spacing: 2px;
+            }
+
+
+            .home-content h2 {
+                font-size: 40px;
+                letter-spacing: 5px;
+            }
+
+
+            /* HIDE SIDE PLUSHIES ON SMALL SCREEN */
+
+            .plushie {
+                display: none;
+            }
+
+
+            .orbit-container {
+                width: 360px;
+                height: 360px;
+            }
+
+
+            .orbit {
+                width: 280px;
+                height: 280px;
+            }
+
+
+            .rotating-pictures {
+                width: 280px;
+                height: 280px;
+            }
+
+
+            .center-video {
+                width: 125px;
+                height: 125px;
+            }
+
+
+            .picture {
+                width: 80px;
+                height: 80px;
+            }
+
+
+            .pic1 {
+                top: -40px;
+                left: 100px;
+            }
+
+
+            .pic2 {
+                bottom: 10px;
+                right: -35px;
+            }
+
+
+            .pic3 {
+                bottom: 10px;
+                left: -35px;
+            }
+
+
+            .reasons-container {
+                grid-template-columns: 1fr;
+            }
+
+
+            .card-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ================= EXTRA MUSIC CSS ================= */
+
+
+    /* ================= MUSIC ================= */
+
+    #music {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .music-subtitle {
+        margin-bottom: 25px;
+    }
+
+    .music-card {
+        width: 90%;
+        max-width: 420px;
+        padding: 25px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 20px;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    }
+
+    .album-cover {
+        width: 250px;
+        height: 250px;
+        object-fit: cover;
+        border-radius: 15px;
+        margin-bottom: 20px;
+    }
+
+    .music-card h2 {
+        margin-bottom: 5px;
+    }
+
+    .song-artist {
+        opacity: 0.8;
+        margin-bottom: 20px;
+    }
+
+    .music-card audio {
+        width: 100%;
+    }
+
+</style>
+
+    </style>
+
+<style>
+/* ================= ENHANCED ROMANTIC UI ================= */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 999;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,.08) 0 1px, transparent 2px),
+        radial-gradient(circle at 80% 35%, rgba(255,255,255,.07) 0 1px, transparent 2px),
+        radial-gradient(circle at 35% 80%, rgba(255,255,255,.06) 0 1px, transparent 2px);
+    background-size: 180px 180px, 230px 230px, 260px 260px;
+    animation: sparkleDrift 18s linear infinite;
+}
+
+@keyframes sparkleDrift {
+    from { transform: translateY(0); }
+    to { transform: translateY(-80px); }
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(35px);
+    transition: opacity .8s ease, transform .8s ease;
+}
+.reveal.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Opening screen */
+#opening-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 3000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 25px;
+    background:
+        radial-gradient(circle at top, #6c2389 0%, #2b0738 48%, #0d0012 100%);
+    transition: opacity .9s ease, visibility .9s ease;
+}
+#opening-screen.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+.opening-card {
+    width: min(92%, 560px);
+    padding: 48px 32px;
+    border-radius: 30px;
+    background: rgba(255,255,255,.09);
+    border: 1px solid rgba(255,255,255,.28);
+    box-shadow: 0 25px 70px rgba(0,0,0,.5);
+    backdrop-filter: blur(18px);
+}
+.opening-heart {
+    font-size: 70px;
+    animation: heartBeat 1.5s infinite;
+    margin-bottom: 18px;
+}
+.opening-card h1 {
+    font-size: clamp(34px, 6vw, 55px);
+}
+.opening-card p {
+    opacity: .88;
+    margin-bottom: 28px;
+}
+.open-btn, .surprise-btn {
+    border: 0;
+    color: white;
+    cursor: pointer;
+    padding: 14px 28px;
+    border-radius: 999px;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: bold;
+    background: linear-gradient(135deg,#b35bd1,#713b88);
+    box-shadow: 0 10px 25px rgba(0,0,0,.35);
+    transition: .3s;
+}
+.open-btn:hover, .surprise-btn:hover {
+    transform: translateY(-4px) scale(1.03);
+}
+
+/* Scroll progress */
+#scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 4px;
+    background: linear-gradient(90deg,#f7b5ff,#fff,#d68cff);
+    z-index: 2000;
+}
+
+/* Section headings */
+.section-tag {
+    display: inline-block;
+    margin-bottom: 12px;
+    padding: 7px 14px;
+    border-radius: 999px;
+    background: rgba(255,255,255,.1);
+    border: 1px solid rgba(255,255,255,.2);
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* Counter */
+#our-time {
+    min-height: 75vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.counter-wrap {
+    width: min(100%, 900px);
+    margin-top: 28px;
+}
+.counter-grid {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 15px;
+}
+.counter-box {
+    padding: 25px 12px;
+    border-radius: 20px;
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.22);
+    box-shadow: 0 10px 30px rgba(0,0,0,.25);
+}
+.counter-number {
+    display: block;
+    font-size: clamp(30px,5vw,52px);
+    font-weight: bold;
+}
+.counter-label {
+    opacity: .75;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.date-note {
+    margin-top: 20px;
+    opacity: .75;
+    font-size: 14px;
+}
+
+/* Plans */
+#plans {
+    min-height: auto;
+}
+.plan-icon {
+    font-size: 45px;
+}
+.plan-card {
+    cursor: default;
+}
+
+/* Love letter */
+#letter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.letter-paper {
+    width: min(90%, 750px);
+    padding: 45px 42px;
+    text-align: left;
+    border-radius: 24px;
+    background: rgba(255,255,255,.94);
+    color: #351541;
+    box-shadow: 0 25px 60px rgba(0,0,0,.35);
+    position: relative;
+}
+.letter-paper::before {
+    content: "💜";
+    position: absolute;
+    right: 25px;
+    top: 20px;
+    font-size: 25px;
+}
+.letter-paper p {
+    margin-bottom: 18px;
+}
+.letter-sign {
+    text-align: right;
+    margin-top: 28px;
+    font-weight: bold;
+}
+
+/* Reasons progress */
+.reasons-progress {
+    width: min(850px,90%);
+    height: 8px;
+    margin: 0 auto 28px;
+    border-radius: 99px;
+    background: rgba(255,255,255,.12);
+    overflow: hidden;
+}
+.reasons-progress span {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,#c77be6,#fff);
+    transform-origin: left;
+}
+
+/* Secret surprise */
+#surprise {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.surprise-box {
+    width: min(90%,700px);
+    padding: 55px 30px;
+    border-radius: 30px;
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.22);
+    box-shadow: 0 20px 55px rgba(0,0,0,.35);
+}
+.surprise-message {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: .8s ease;
+}
+.surprise-message.open {
+    max-height: 500px;
+    opacity: 1;
+    margin-top: 30px;
+}
+.big-heart {
+    font-size: 75px;
+    margin: 15px;
+    animation: heartBeat 1.5s infinite;
+}
+
+/* Final */
+#final {
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.final-line {
+    font-size: clamp(22px,4vw,38px);
+    max-width: 850px;
+    line-height: 1.45;
+}
+.final-choice {
+    margin-top: 25px;
+    font-size: clamp(26px,5vw,50px);
+    font-weight: bold;
+}
+
+/* Floating hearts */
+.floating-heart {
+    position: fixed;
+    bottom: -30px;
+    pointer-events: none;
+    z-index: 1200;
+    animation: floatHeart 4s ease-out forwards;
+    opacity: .85;
+}
+@keyframes floatHeart {
+    0% { transform: translateY(0) scale(.7) rotate(0); opacity: 0; }
+    15% { opacity: 1; }
+    100% { transform: translateY(-105vh) scale(1.25) rotate(20deg); opacity: 0; }
+}
+
+@media (max-width:700px) {
+    .counter-grid { grid-template-columns: repeat(2,1fr); }
+    .letter-paper { padding: 32px 24px; }
+}
+
+/* ================= FOUR ROMANTIC GIFTS ================= */
+#gift-section{min-height:auto;padding-top:100px;padding-bottom:110px}
+.gift-subtitle{margin-bottom:38px;opacity:.88}
+.gifts-grid{width:min(100%,1000px);margin:auto;display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.gift-card{position:relative;min-height:260px;padding:25px 18px;border-radius:24px;background:linear-gradient(145deg,rgba(255,255,255,.13),rgba(255,255,255,.055));border:1px solid rgba(255,255,255,.24);box-shadow:0 14px 35px rgba(0,0,0,.32);cursor:pointer;overflow:hidden;transition:.35s ease}
+.gift-card::before{content:"";position:absolute;width:170px;height:170px;border-radius:50%;background:rgba(221,154,255,.12);filter:blur(5px);top:-70px;right:-55px}
+.gift-card:hover{transform:translateY(-10px) scale(1.02);box-shadow:0 22px 45px rgba(0,0,0,.45)}
+.gift-box{width:108px;height:86px;position:relative;margin:18px auto 20px;background:linear-gradient(135deg,#a93bc7,#61206f);border-radius:7px 7px 12px 12px;box-shadow:inset 10px 0 16px rgba(255,255,255,.12),inset -10px 0 18px rgba(0,0,0,.22),0 12px 20px rgba(0,0,0,.3)}
+.gift-lid{position:absolute;left:-7px;top:-15px;width:122px;height:24px;border-radius:6px;background:linear-gradient(135deg,#c05be0,#762785);box-shadow:0 5px 8px rgba(0,0,0,.28)}
+.gift-ribbon-v{position:absolute;left:45px;top:-15px;width:18px;height:101px;background:linear-gradient(90deg,#f7d9ff,#d79be9,#fff);opacity:.88}
+.gift-ribbon-h{position:absolute;left:-7px;top:28px;width:122px;height:14px;background:linear-gradient(90deg,#f7d9ff,#d79be9,#fff);opacity:.82}
+.gift-bow{position:absolute;top:-31px;left:37px;width:34px;height:26px}.gift-bow::before,.gift-bow::after{content:"";position:absolute;width:25px;height:19px;border:5px solid #f1c8ff;border-radius:70% 25% 70% 25%;top:4px}.gift-bow::before{left:-12px;transform:rotate(25deg)}.gift-bow::after{right:-12px;transform:scaleX(-1) rotate(25deg)}
+.gift-card h3{font-size:21px;margin-bottom:7px}.gift-card p{font-size:14px;opacity:.75}.gift-hint{font-size:12px!important;margin-top:12px;letter-spacing:1px;text-transform:uppercase;opacity:.55!important}
+.gift-modal{position:fixed;inset:0;z-index:5000;display:flex;align-items:center;justify-content:center;padding:22px;background:rgba(8,0,13,.78);backdrop-filter:blur(12px);opacity:0;visibility:hidden;pointer-events:none;transition:.35s ease}.gift-modal.show{opacity:1;visibility:visible;pointer-events:auto}
+.gift-modal-box{width:min(92%,760px);max-height:90vh;overflow:auto;position:relative;padding:38px 30px 32px;border-radius:30px;background:linear-gradient(145deg,#4b1266,#21052b);border:1px solid rgba(255,255,255,.28);box-shadow:0 30px 90px rgba(0,0,0,.65);text-align:center;transform:scale(.86) translateY(20px);transition:.4s ease}.gift-modal.show .gift-modal-box{transform:scale(1) translateY(0)}
+.gift-close{position:absolute;right:18px;top:15px;width:38px;height:38px;border:1px solid rgba(255,255,255,.25);border-radius:50%;background:rgba(255,255,255,.1);color:#fff;font-size:22px;cursor:pointer}.gift-modal-title{font-size:32px;margin-bottom:6px}.gift-modal-text{font-size:16px;opacity:.82;margin-bottom:22px}
+.bouquet-stage{width:min(100%,560px);height:390px;margin:8px auto 18px;position:relative;display:flex;align-items:flex-end;justify-content:center}.bouquet-wrap{position:absolute;bottom:5px;left:50%;transform:translateX(-50%);width:190px;height:170px;background:linear-gradient(135deg,#f1b7e5,#b85bb4 52%,#702c77);clip-path:polygon(8% 0,92% 0,76% 100%,24% 100%);filter:drop-shadow(0 16px 15px rgba(0,0,0,.35));z-index:5}.bouquet-wrap::after{content:"";position:absolute;left:50%;top:0;bottom:0;width:7px;transform:translateX(-50%) rotate(7deg);background:rgba(255,255,255,.18)}
+.flower{position:absolute;width:92px;height:92px;filter:drop-shadow(0 7px 8px rgba(0,0,0,.3));z-index:4}.petal{position:absolute;left:30px;top:4px;width:31px;height:52px;border-radius:55% 55% 45% 45%;transform-origin:16px 42px}.flower .petal:nth-child(1){transform:rotate(0deg)}.flower .petal:nth-child(2){transform:rotate(60deg)}.flower .petal:nth-child(3){transform:rotate(120deg)}.flower .petal:nth-child(4){transform:rotate(180deg)}.flower .petal:nth-child(5){transform:rotate(240deg)}.flower .petal:nth-child(6){transform:rotate(300deg)}
+.flower.rose .petal{background:radial-gradient(circle at 35% 28%,#fff2fa,#f28aae 45%,#a92961 100%);box-shadow:inset 4px -4px 7px rgba(99,0,42,.2)}.flower.lilac .petal{background:radial-gradient(circle at 35% 28%,#fff,#d7a5ff 48%,#7a3c9c 100%);box-shadow:inset 4px -4px 7px rgba(54,0,77,.18)}.flower::after{content:"";position:absolute;left:36px;top:37px;width:22px;height:22px;border-radius:50%;background:radial-gradient(circle,#fff6c4 0 22%,#f4bf55 25% 58%,#a96019 60% 100%);z-index:4}
+.flower.f1{left:calc(50% - 155px);bottom:122px;transform:scale(.9)}.flower.f2{left:calc(50% - 85px);bottom:178px;transform:scale(1.12)}.flower.f3{left:calc(50% + 5px);bottom:155px;transform:scale(.95)}.flower.f4{left:calc(50% + 68px);bottom:113px;transform:scale(.82)}.flower.f5{left:calc(50% - 15px);bottom:91px;transform:scale(.86)}
+.stem{position:absolute;width:7px;height:150px;background:linear-gradient(90deg,#244d2d,#6e9a58,#183a24);left:50%;bottom:48px;transform-origin:bottom;border-radius:99px;z-index:2}.stem.s1{transform:rotate(-28deg);height:180px}.stem.s2{transform:rotate(-12deg);height:205px}.stem.s3{transform:rotate(8deg);height:200px}.stem.s4{transform:rotate(25deg);height:175px}.leaf{position:absolute;width:48px;height:20px;border-radius:100% 0 100% 0;background:linear-gradient(135deg,#8fb86e,#254f31);box-shadow:inset 4px 3px 5px rgba(255,255,255,.18);z-index:3}.leaf.l1{left:calc(50% - 110px);bottom:105px;transform:rotate(20deg)}.leaf.l2{left:calc(50% + 50px);bottom:125px;transform:rotate(155deg)}.leaf.l3{left:calc(50% - 55px);bottom:70px;transform:rotate(170deg)}
+.bouquet-note{font-size:15px;opacity:.8}.teddy-art{font-size:145px;line-height:1;margin:20px 0;filter:drop-shadow(0 12px 10px rgba(0,0,0,.35))}.choco-art{width:310px;margin:25px auto;display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:18px;border-radius:18px;background:linear-gradient(145deg,#6b331e,#30140b);box-shadow:inset 0 0 25px rgba(255,255,255,.08),0 15px 30px rgba(0,0,0,.35)}.choco-art span{height:58px;border-radius:9px;background:linear-gradient(145deg,#8d4c2e,#35170e);box-shadow:inset 4px 4px 6px rgba(255,255,255,.12),inset -5px -5px 8px rgba(0,0,0,.35)}
+.perfume-art{width:130px;height:165px;margin:25px auto 30px;border-radius:22px 22px 15px 15px;background:linear-gradient(90deg,#e5b5ff,#fff,#c67ce8);box-shadow:inset 10px 0 18px rgba(255,255,255,.45),0 18px 30px rgba(0,0,0,.35);position:relative}.perfume-art::before{content:"";position:absolute;left:35px;top:-35px;width:60px;height:40px;border-radius:7px 7px 2px 2px;background:linear-gradient(90deg,#c3c3c3,#fff,#999)}.perfume-art::after{content:"FOR LEIGH";position:absolute;left:14px;right:14px;top:72px;padding:8px 3px;border-radius:5px;background:rgba(255,255,255,.75);color:#5d2b68;font-size:11px;letter-spacing:2px}
+
+/* ===== Improved gift artwork ===== */
+.real-bouquet{
+  width:min(100%,560px); height:420px; margin:5px auto 12px; position:relative;
+  display:flex; align-items:center; justify-content:center;
+  filter:drop-shadow(0 20px 28px rgba(48,12,58,.25));
+}
+.real-bouquet svg{width:100%;height:100%;overflow:visible}
+.bouquet-glow{fill:url(#bouquetGlow);opacity:.55}
+.bouquet-caption{
+  display:inline-block;margin-top:4px;padding:7px 14px;border-radius:999px;
+  background:rgba(151,77,170,.10);color:#6b3674;font-size:13px;font-weight:700;
+}
+.food-gift{
+  width:min(100%,520px);margin:20px auto 12px;display:flex;align-items:flex-end;
+  justify-content:center;gap:24px;min-height:255px;
+}
+.coco-cup{
+  position:relative;width:130px;height:205px;border-radius:18px 18px 30px 30px;
+  background:linear-gradient(90deg,#fff8f0 0%,#e8d5c2 48%,#fffaf4 100%);
+  border:3px solid #8c5a3c;box-shadow:0 18px 30px rgba(40,20,10,.28);
+  transform:rotate(-3deg);
+}
+.coco-cup:before{
+  content:"";position:absolute;left:8px;right:8px;top:0;height:30px;border-radius:50%;
+  background:linear-gradient(#f5eee5,#b68d69);border:2px solid #765039;
+}
+.coco-cup:after{
+  content:"COCO\A MILK TEA";white-space:pre;position:absolute;left:13px;right:13px;top:78px;
+  padding:10px 4px;border-radius:9px;background:#fff;color:#513422;font-weight:900;
+  font-size:13px;line-height:1.15;text-align:center;letter-spacing:.7px;
+}
+.straw{position:absolute;right:28px;top:-72px;width:9px;height:105px;border-radius:8px;
+  background:linear-gradient(90deg,#ff5e9c,#ffb4d2);transform:rotate(8deg);z-index:2}
+.straw:after{content:"";position:absolute;top:-5px;left:-1px;width:11px;height:14px;border-radius:8px;background:#ff79ad}
+.pearl{position:absolute;width:11px;height:11px;border-radius:50%;background:#34211c;box-shadow:0 0 0 1px rgba(255,255,255,.15)}
+.pearl.p1{left:29px;bottom:22px}.pearl.p2{left:53px;bottom:36px}.pearl.p3{left:78px;bottom:18px}.pearl.p4{left:65px;bottom:65px}
+.fries-box{position:relative;width:170px;height:125px;background:linear-gradient(135deg,#ee263b,#a70f22);
+  clip-path:polygon(6% 15%,94% 15%,83% 100%,17% 100%);box-shadow:0 18px 30px rgba(70,10,10,.28);
+  transform:rotate(3deg)}
+.fries-box:before{content:"POTATO\A CORNER";white-space:pre;position:absolute;left:20px;right:20px;top:58px;
+  color:#ffd83d;font-size:14px;font-weight:1000;line-height:1.05;text-align:center;z-index:3}
+.fries{position:absolute;bottom:82px;width:17px;height:120px;border-radius:4px 4px 2px 2px;
+  background:linear-gradient(90deg,#fff06b,#ffc52b);box-shadow:inset 2px 0 2px rgba(255,255,255,.55)}
+.fries.f1{left:18px;transform:rotate(-10deg)}.fries.f2{left:42px;bottom:88px;transform:rotate(-4deg)}
+.fries.f3{left:67px;bottom:92px;transform:rotate(3deg)}.fries.f4{left:91px;bottom:86px;transform:rotate(8deg)}
+.fries.f5{left:116px;bottom:80px;transform:rotate(13deg)}.fries.f6{left:137px;bottom:76px;transform:rotate(18deg)}
+.zhuxin-card{
+  width:min(100%,430px);margin:18px auto 10px;padding:12px;border-radius:24px;
+  background:linear-gradient(145deg,#171027,#3d1855 50%,#8e2f89);
+  box-shadow:0 22px 45px rgba(28,8,42,.38);position:relative;overflow:hidden;
+}
+.zhuxin-card:before{content:"";position:absolute;inset:-30%;background:
+ radial-gradient(circle at 20% 30%,rgba(255,93,193,.32),transparent 26%),
+ radial-gradient(circle at 80% 65%,rgba(178,90,255,.25),transparent 28%);pointer-events:none}
+.zhuxin-card img{display:block;width:100%;max-height:460px;object-fit:cover;object-position:center;
+  border-radius:17px;position:relative;z-index:1}
+.zhuxin-name{margin:10px 0 2px;color:#fff;font-size:28px;font-weight:900;letter-spacing:2px;position:relative;z-index:1}
+.zhuxin-role{margin:0;color:#f7c9ff;font-size:12px;letter-spacing:3px;text-transform:uppercase;position:relative;z-index:1}
+@media(max-width:800px){.gifts-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:520px){.gifts-grid{grid-template-columns:1fr}.gift-card{min-height:230px}.gift-modal-box{padding:35px 17px 25px}.gift-modal-title{font-size:26px}.bouquet-stage{height:330px;transform:scale(.82);transform-origin:center top;margin-bottom:-45px}}
+</style>
+
+
+<style id="gift-centering-fix">
+.gifts-grid { display:flex !important; justify-content:center !important; align-items:stretch !important; flex-wrap:wrap !important; margin-left:auto !important; margin-right:auto !important; }
+.gift-card { flex:0 1 280px !important; }
+</style>
+
+<style id="gift-click-fix">
+#gift-section { position: relative; z-index: 10; }
+#gift-section .gifts-grid { position: relative; z-index: 20; }
+#gift-section .gift-card {
+  position: relative;
+  z-index: 21;
+  cursor: pointer !important;
+  pointer-events: auto !important;
+  user-select: none;
+}
+#gift-section .gift-card * { pointer-events: none; }
+#gift-section .gift-card:active { transform: translateY(-5px) scale(.99); }
+</style>
+
+
+<style id="gift-button-fix">
+#gift-section .gifts-grid {
+  display:flex !important;
+  justify-content:center !important;
+  align-items:stretch !important;
+  gap:24px !important;
+  flex-wrap:wrap !important;
+}
+#gift-section .gift-card {
+  appearance:none !important;
+  -webkit-appearance:none !important;
+  border:1px solid rgba(255,255,255,.24) !important;
+  font:inherit !important;
+  color:inherit !important;
+  text-align:center !important;
+  display:block !important;
+  width:280px !important;
+  min-height:260px !important;
+  cursor:pointer !important;
+  pointer-events:auto !important;
+  position:relative !important;
+  z-index:100 !important;
+}
+#gift-section .gift-card * { pointer-events:none !important; }
+#gift-section .gift-card:focus-visible { outline:3px solid rgba(240,200,255,.9); outline-offset:4px; }
+@media (max-width:800px){#gift-section .gifts-grid{gap:16px !important}.gift-card{width:min(280px,92vw) !important}}
+
+
+/* ================= MAZE LOVE GAME ================= */
+.love-game-section {
+    text-align: center;
+}
+
+.love-game-card {
+    width: min(92%, 620px);
+    margin: 30px auto 0;
+    padding: 26px;
+    border: 1px solid rgba(210, 160, 255, .28);
+    border-radius: 24px;
+    background: rgba(45, 15, 58, .72);
+    box-shadow: 0 18px 50px rgba(0,0,0,.25);
+}
+
+.love-game-intro {
+    color: #eadcf7;
+    margin-bottom: 18px;
+}
+
+.maze-wrap {
+    display: flex;
+    justify-content: center;
+    overflow-x: auto;
+    padding: 8px;
+}
+
+.love-maze {
+    display: grid;
+    grid-template-columns: repeat(10, 38px);
+    grid-template-rows: repeat(10, 38px);
+    gap: 3px;
+    padding: 8px;
+    border-radius: 18px;
+    background: rgba(20, 5, 30, .9);
+    box-shadow: inset 0 0 20px rgba(190, 120, 255, .12);
+}
+
+.maze-cell {
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 7px;
+    background: rgba(255,255,255,.045);
+    font-size: 23px;
+    user-select: none;
+}
+
+.maze-wall {
+    background: linear-gradient(135deg, #321344, #4a1c5e);
+    box-shadow: inset 0 0 0 1px rgba(220,170,255,.08);
+}
+
+.maze-player {
+    filter: drop-shadow(0 0 7px rgba(180,130,255,.9));
+    animation: mazeBounce .7s ease-in-out infinite alternate;
+}
+
+.maze-goal {
+    filter: drop-shadow(0 0 8px rgba(255,170,240,.85));
+    animation: mazeGlow 1.2s ease-in-out infinite;
+}
+
+@keyframes mazeBounce {
+    from { transform: translateY(1px); }
+    to { transform: translateY(-2px); }
+}
+
+@keyframes mazeGlow {
+    0%,100% { transform: scale(1); }
+    50% { transform: scale(1.12); }
+}
+
+.maze-controls {
+    margin: 18px auto 8px;
+    width: 180px;
+    display: grid;
+    grid-template-columns: repeat(3, 56px);
+    gap: 6px;
+    justify-content: center;
+}
+
+.maze-control-btn,
+.maze-reset-btn {
+    border: 1px solid rgba(224,182,255,.35);
+    color: white;
+    background: linear-gradient(135deg, #51226b, #7a3d91);
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 6px 15px rgba(0,0,0,.2);
+    transition: .2s ease;
+}
+
+.maze-control-btn {
+    width: 56px;
+    height: 45px;
+    font-size: 20px;
+}
+
+.maze-control-btn:hover,
+.maze-reset-btn:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.12);
+}
+
+.maze-control-btn:active,
+.maze-reset-btn:active {
+    transform: scale(.95);
+}
+
+.maze-reset-btn {
+    padding: 10px 20px;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.maze-status {
+    min-height: 24px;
+    margin: 12px 0 0;
+    color: #e7c8ff;
+    font-size: 14px;
+}
+
+.maze-note {
+    margin-top: 12px;
+    color: #cdb4dc;
+    font-size: 12px;
+}
+
+.love-notification {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(.85);
+    width: min(88%, 430px);
+    padding: 28px 24px;
+    border: 1px solid rgba(255,220,255,.35);
+    border-radius: 24px;
+    background: rgba(37, 8, 49, .97);
+    box-shadow: 0 25px 80px rgba(0,0,0,.55), 0 0 40px rgba(183,115,255,.2);
+    text-align: center;
+    z-index: 9999;
+    opacity: 0;
+    pointer-events: none;
+    transition: .3s ease;
+}
+
+.love-notification.show {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.love-notification .notif-heart {
+    font-size: 42px;
+    margin-bottom: 8px;
+}
+
+.love-notification h3 {
+    margin: 0 0 10px;
+    font-size: 25px;
+}
+
+.love-notification p {
+    margin: 0 auto 18px;
+    line-height: 1.7;
+    color: #eadcf7;
+}
+
+.love-notification button {
+    border: 0;
+    padding: 10px 22px;
+    border-radius: 999px;
+    color: white;
+    background: linear-gradient(135deg, #743b91, #a25bc3);
+    cursor: pointer;
+}
+
+@media (max-width: 520px) {
+    .love-game-card { padding: 16px 8px; }
+    .love-maze {
+        grid-template-columns: repeat(10, 30px);
+        grid-template-rows: repeat(10, 30px);
+    }
+    .maze-cell { width: 30px; height: 30px; font-size: 18px; }
+}
+</style>
+<style id="our-time-gallery-style">
+/* OUR TIME — romantic memory carousel */
+#our-time{padding-bottom:110px;min-height:auto}
+.memory-gallery{width:min(100%,950px);margin:65px auto 0;position:relative}
+.memory-eyebrow{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#edbafa;margin-bottom:10px}
+.memory-gallery h2{font-size:clamp(27px,4vw,38px);margin-bottom:10px}
+.memory-gallery .memory-intro{font-size:15px;color:#e9cbea;margin-bottom:26px}
+.memory-stage{position:relative;display:flex;align-items:center;justify-content:center;gap:12px}
+.memory-window{width:min(100%,660px);aspect-ratio: 1.35;position:relative;overflow:hidden;border-radius:28px;border:2px solid rgba(248,206,255,.48);background:linear-gradient(145deg,#49205f,#1c0929);box-shadow:0 24px 70px rgba(0,0,0,.5),0 0 38px rgba(212,123,249,.17);isolation:isolate}
+.memory-window:after{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,transparent 58%,rgba(12,0,22,.86));z-index:2}
+.memory-slide{position:absolute;inset:0;opacity:0;visibility:hidden;transform:translateX(16%) scale(1.09);filter:blur(8px);transition:opacity .8s ease,transform 1s cubic-bezier(.2,.7,.2,1),filter .8s ease,visibility .8s}
+.memory-slide.active{opacity:1;visibility:visible;transform:translateX(0) scale(1);filter:blur(0);z-index:1}
+.memory-slide img{width:100%;height:100%;object-fit:cover;display:block;animation:memoryKenBurns 9s ease-in-out infinite alternate}
+@keyframes memoryKenBurns{from{transform:scale(1)}to{transform:scale(1.07)}}
+.memory-placeholder[hidden]{display:none!important}
+.memory-placeholder{height:100%;display:grid;place-content:center;gap:15px;background:radial-gradient(circle at 30% 25%,#81439d,#361345 60%,#20082f);color:#f3d8ff}
+.memory-placeholder span{font-size:clamp(65px,12vw,110px);filter:drop-shadow(0 10px 20px #22052a)}
+.memory-placeholder small{font-size:15px;letter-spacing:2px}
+.memory-caption{position:absolute;bottom:25px;left:25px;right:25px;z-index:3;text-align:left}
+.memory-caption strong{font-size:clamp(19px,3vw,28px);display:block;text-shadow:0 3px 12px #18021d}
+.memory-caption span{font-size:13px;color:#f0d4f7}
+.memory-arrow{width:48px;height:48px;flex:0 0 48px;border-radius:50%;border:1px solid #d8a7eb;background:linear-gradient(145deg,#8544a0,#4a1a60);color:white;font-size:27px;cursor:pointer;box-shadow:0 8px 20px #14051c;transition:transform .25s,background .25s;z-index:5}
+.memory-arrow{pointer-events:auto!important;position:relative;z-index:30!important;touch-action:manipulation}
+.memory-arrow:hover{transform:scale(1.13);background:#a45bc1}
+.memory-controls{display:flex;align-items:center;justify-content:center;gap:13px;margin-top:22px}
+.memory-dot{width:9px;height:9px;border-radius:30px;border:0;background:#92649f;cursor:pointer;transition:width .35s,background .35s}
+.memory-dot.active{width:30px;background:#f2c3ff}
+.memory-count{font-size:13px;letter-spacing:2px;color:#f0cafa;margin-top:15px}
+@media(max-width:700px){.memory-gallery{margin-top:48px}.memory-stage{gap:5px}.memory-window{aspect-ratio: .85;border-radius:20px}.memory-arrow{width:34px;height:40px;flex-basis:34px;font-size:23px}.memory-caption{left:16px;right:16px;bottom:18px}}
+@media(prefers-reduced-motion:reduce){.memory-slide,.memory-slide img,.memory-dot{animation:none!important;transition:none!important}}
+</style>
+</head>
+
+
+<body>
+<div id="scroll-progress"></div>
+
+<div id="opening-screen">
+    <div class="opening-card">
+        <div class="opening-heart">💜</div>
+        <h1>Something na para sayo lang talaga</h1>
+        <p>A little website filled with memories, music, and all the reasons I chose you.</p>
+        <button class="open-btn" onclick="openWebsite()">Open the message 💌</button>
+    </div>
+</div>
+
+
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="navbar">
+
+        <div class="nav-buttons">
+
+            <a href="#home">Home</a>
+
+            <a href="#picture">Picture</a>
+
+            <a href="#food">Food</a>
+
+            <a href="#hobbies">Hobbies</a>
+
+            <a href="#music">Music</a>
+
+            <a href="#our-time">Our Time</a>
+
+            <a href="#plans">Plans</a>
+
+            <a href="#letter">Letter</a>
+            <a href="#gift-section">Gifts</a>
+
+            <a href="#reasons">Reasons</a>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- ================= HOME ================= -->
+
+    <section id="home" class="reveal">
+
+
+        <!-- LEFT CUTE PLUSHIE -->
+
+        <div class="plushie left">
+
+            <div class="plushie-heart">
+                💗
+            </div>
+
+            <div class="bear-ear left-ear">
+                <div class="bear-inner-ear"></div>
+            </div>
+
+            <div class="bear-ear right-ear">
+                <div class="bear-inner-ear"></div>
+            </div>
+
+            <div class="bear-head">
+
+                <div class="bear-eye left-eye"></div>
+
+                <div class="bear-eye right-eye"></div>
+
+                <div class="bear-nose"></div>
+
+                <div class="bear-mouth"></div>
+
+            </div>
+
+            <div class="bear-body">
+
+                <div class="bear-belly"></div>
+
+            </div>
+
+            <div class="bear-arm left-arm"></div>
+
+            <div class="bear-arm right-arm"></div>
+
+            <div class="bear-leg left-leg"></div>
+
+            <div class="bear-leg right-leg"></div>
+
+        </div>
+
+
+
+        <!-- RIGHT CUTE PLUSHIE -->
+
+        <div class="plushie pink right">
+
+            <div class="plushie-heart">
+                💜
+            </div>
+
+            <div class="bear-ear left-ear">
+                <div class="bear-inner-ear"></div>
+            </div>
+
+            <div class="bear-ear right-ear">
+                <div class="bear-inner-ear"></div>
+            </div>
+
+            <div class="bear-head">
+
+                <div class="bear-eye left-eye"></div>
+
+                <div class="bear-eye right-eye"></div>
+
+                <div class="bear-nose"></div>
+
+                <div class="bear-mouth"></div>
+
+            </div>
+
+            <div class="bear-body">
+
+                <div class="bear-belly"></div>
+
+            </div>
+
+            <div class="bear-arm left-arm"></div>
+
+            <div class="bear-arm right-arm"></div>
+
+            <div class="bear-leg left-leg"></div>
+
+            <div class="bear-leg right-leg"></div>
+
+        </div>
+
+
+
+        <!-- HOME MESSAGE -->
+
+        <div class="home-content">
+
+            <h1>
+                A MESSAGE JUST FOR YOU
+            </h1>
+
+            <h2>
+                LEIGH
+            </h2>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= PICTURE ================= -->
+
+    <section id="picture" class="reveal">
+
+        <h1>
+            Your Pictures 📸
+        </h1>
+
+        <p class="picture-subtitle">
+            Memories that go around and around 💜
+        </p>
+
+
+        <div class="orbit-container">
+
+
+            <!-- WHITE ORBIT -->
+
+            <div class="orbit"></div>
+
+
+
+            <!-- ROTATING PICTURES -->
+
+            <div class="rotating-pictures">
+
+                <img
+                    src="./lei1.jpg"
+                    class="picture pic1"
+                    alt="Picture 1"
+                >
+
+                <img
+                    src="./lei2.jpg"
+                    class="picture pic2"
+                    alt="Picture 2"
+                >
+
+                <img
+                    src="./lei3.jpg"
+                    class="picture pic3"
+                    alt="Picture 3"
+                >
+
+            </div>
+
+
+
+            <!-- CENTER VIDEO -->
+
+            <div class="center-video">
+
+                <video
+                    autoplay
+                    muted
+                    loop
+                    playsinline
+                >
+
+                    <source
+                        src="./lei4.mp4"
+                        type="video/mp4"
+                    >
+
+                    Your browser does not support video.
+
+                </video>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= FOOD ================= -->
+
+    <section id="food" class="reveal">
+
+        <h1>
+            Favorite Food 🍫
+        </h1>
+
+        <p class="food-subtitle">
+            The things she loves to eat 💜
+        </p>
+
+
+        <div class="card-container">
+
+
+            <div class="card">
+
+                <div class="card-icon">
+                    🍽️
+                </div>
+
+                <h3>
+                    Anything She Likes
+                </h3>
+
+                <p>
+                    Kahit ano, basta gusto niya.
+                </p>
+
+            </div>
+
+
+
+            <div class="card">
+
+                <div class="card-icon">
+                    🍤
+                </div>
+
+                <h3>
+                    Buttered Shrimp
+                </h3>
+
+                <p>
+                    One of her favorites.
+                </p>
+
+            </div>
+
+
+
+            <div class="card">
+
+                <div class="card-icon">
+                    🥥
+                </div>
+
+                <h3>
+                    Coco + Potato Corner
+                </h3>
+
+                <p>
+                    A combination she enjoys.
+                </p>
+
+            </div>
+
+
+
+            <div class="card">
+
+                <div class="card-icon">
+                    🍫
+                </div>
+
+                <h3>
+                    Chocolate
+                </h3>
+
+                <p>
+                    More on chocolate because why not? HAHAHA.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= HOBBIES ================= -->
+
+    <section id="hobbies" class="reveal">
+
+        <h1>
+            Her Hobbies 🎨
+        </h1>
+
+        <p class="hobbies-subtitle">
+            Things that make Leigh happy 💜
+        </p>
+
+
+        <div class="card-container">
+
+
+            <div class="card">
+
+                <div class="card-icon">
+                    🎸
+                </div>
+
+                <h3>
+                    Playing Guitar
+                </h3>
+
+                <p>
+                    She enjoys playing the guitar.
+                </p>
+
+            </div>
+
+
+
+            <div class="card">
+
+                <div class="card-icon">
+                    😂
+                </div>
+
+                <h3>
+                    Asarin Ako
+                </h3>
+
+                <p>
+                    Apparently, isa rin itong hobby niya HAHAHAHAHA.
+                </p>
+
+            </div>
+
+
+
+            <div class="card">
+
+                <div class="card-icon">
+                    🍳
+                </div>
+
+                <h3>
+                    Cooking
+                </h3>
+
+                <p>
+                    She enjoys making delicious food.
+                </p>
+
+            </div>
+
+
+
+            <div class="card">
+
+                <div class="card-icon">
+                    🧁
+                </div>
+
+                <h3>
+                    Baking
+                </h3>
+
+                <p>
+                    Making sweet things with love.
+                </p>
+
+            </div>
+
+
+
+            <div class="card">
+
+                <div class="card-icon">
+                    🎨
+                </div>
+
+                <h3>
+                    Drawing
+                </h3>
+
+                <p>
+                    Creating things through art.
+                </p>
+
+            </div>
+
+
+
+            <div class="card">
+
+                <div class="card-icon">
+                    🎤
+                </div>
+
+                <h3>
+                    Singing
+                </h3>
+
+                <p>
+                    Singing whenever the mood strikes.
+                </p>
+
+            </div>
+
+
+
+            <div class="card">
+
+                <div class="card-icon">
+                    🎮
+                </div>
+
+                <h3>
+                    Playing Online Games
+                </h3>
+
+                <p>
+                    Roblox • ML • Valorant • Minecraft
+                </p>
+
+            </div>
+
+
+
+            <div class="card">
+
+                <div class="card-icon">
+                    🍿
+                </div>
+
+                <h3>
+                    Watching Anime
+                </h3>
+
+                <p>
+                    Enjoying anime and getting lost in different stories.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+        <!-- ================= MUSIC ================= -->
+
+        <section id="music" class="reveal">
+
+            <h1>Same music taste natin to e  🎵</h1>
+
+            <p class="music-subtitle">
+                A song that reminds me of you 💜
+            </p>
+
+            <div class="music-card">
+
+                <img src="./heralbum.jpg" alt="Album Cover" class="album-cover">
+
+                <h2>Her</h2>
+
+                <p class="song-artist">By: Chase Atlantic</p>
+
+                <audio id="mainSong" controls>
+                    <source src="./her.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+
+            </div>
+
+        </section>
+
+
+
+    
+
+<!-- ================= LOVE MAZE GAME ================= -->
+<section id="love-game" class="reveal love-game-section">
+    <span class="section-tag">A Little Challenge 💜</span>
+    <h1>Maze Game 🧭</h1>
+    <p class="love-game-intro">
+        Guide the boy through the maze until he reaches the girl. 💜<br>
+        kahit malayo, hahanapin pa rin ang way papunta sa'yo.
+    </p>
+
+    <div class="love-game-card">
+        <div class="maze-wrap">
+            <div id="loveMaze" class="love-maze" aria-label="Love maze game"></div>
+        </div>
+
+        <div class="maze-controls" aria-label="Maze controls">
+            <span></span>
+            <button class="maze-control-btn" data-dir="up" aria-label="Move up">▲</button>
+            <span></span>
+            <button class="maze-control-btn" data-dir="left" aria-label="Move left">◀</button>
+            <button class="maze-control-btn" data-dir="down" aria-label="Move down">▼</button>
+            <button class="maze-control-btn" data-dir="right" aria-label="Move right">▶</button>
+        </div>
+
+        <p id="mazeStatus" class="maze-status">Use WASD or the arrow keys. 💜</p>
+        <button id="mazeReset" class="maze-reset-btn">Restart the maze ↻</button>
+    </div>
+</section>
+
+<div id="loveNotification" class="love-notification" role="dialog" aria-modal="true" aria-labelledby="loveNotifTitle">
+    <div class="notif-heart">💜</div>
+    <h3 id="loveNotifTitle">You made it!</h3>
+    <p>
+        Kahit gaano kahaba yung maze, ikaw pa rin yung pupuntahan ko.<br>
+        <strong>Distance can't stop me from finding my way back to you. 💜</strong>
+    </p>
+    <button id="closeLoveNotification">Aww, okay 💜</button>
+</div>
+<!-- ================= OUR TIME ================= -->
+    <section id="our-time" class="reveal">
+        <span class="section-tag">Time Counter 💜</span>
+        <h1>Our Time Together ⏳</h1>
+        <p>Every second becomes another little memory. (Random lang to nyahahaha)</p>
+
+        <div class="counter-wrap">
+            <div class="counter-grid">
+                <div class="counter-box">
+                    <span class="counter-number" id="days">0</span>
+                    <span class="counter-label">Days</span>
+                </div>
+                <div class="counter-box">
+                    <span class="counter-number" id="hours">0</span>
+                    <span class="counter-label">Hours</span>
+                </div>
+                <div class="counter-box">
+                    <span class="counter-number" id="minutes">0</span>
+                    <span class="counter-label">Minutes</span>
+                </div>
+                <div class="counter-box">
+                    <span class="counter-number" id="seconds">0</span>
+                    <span class="counter-label">Seconds</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="memory-gallery" aria-label="Our photo memories">
+          <div class="memory-eyebrow">✦ Little moments, big feelings ✦</div>
+          <h2>Our Little Gallery 💜</h2>
+          <p class="memory-intro">A collection of moments I never want to forget.</p>
+          <div class="memory-stage">
+            <button class="memory-arrow" id="memoryPrev" type="button" aria-label="Previous photo">‹</button>
+            <div class="memory-window" id="memoryWindow" aria-live="polite">
+              <!-- Replace the filenames below with your own photos, kept beside this HTML file. -->
+              <div class="memory-slide active"><img src="US1.jpg" alt="Our memory 1" onerror="this.style.display='none';this.nextElementSibling.hidden=false"><div class="memory-placeholder" hidden><span>💜</span><small>memory1.jpg</small></div><div class="memory-caption"><strong>Our Favorite Moment ✨</strong><span>Every memory with you matters.</span></div></div>
+              <div class="memory-slide"><img src="US2.jpg" alt="Our memory 2" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.hidden=false"><div class="memory-placeholder" hidden><span>🌷</span><small>memory2.jpg</small></div><div class="memory-caption"><strong>Little Things 🌷</strong><span>The simple moments feel special.</span></div></div>
+              <div class="memory-slide"><img src="US3.jpg" alt="Our memory 3" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.hidden=false"><div class="memory-placeholder" hidden><span>💌</span><small>memory3.jpg</small></div><div class="memory-caption"><strong>Just Us 💌</strong><span>A moment worth keeping forever.</span></div></div>
+              <div class="memory-slide"><img src="US4.jpg" alt="Our memory 4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.hidden=false"><div class="memory-placeholder" hidden><span>✨</span><small>memory4.jpg</small></div><div class="memory-caption"><strong>More to Come ✨</strong><span>Here's to more memories together.</span></div></div>
+            </div>
+            <button class="memory-arrow" id="memoryNext" type="button" aria-label="Next photo">›</button>
+          </div>
+          <div class="memory-controls" id="memoryDots" aria-label="Choose photo"></div>
+          <div class="memory-count" id="memoryCount">01 / 04</div>
+        </div>
+    </section>
+
+    <!-- ================= THINGS TO DO ================= -->
+    <section id="plans" class="reveal">
+        <span class="section-tag">For Us 🌷</span>
+        <h1>Things I Want To Do With You</h1>
+        <p class="food-subtitle">More memories waiting to happen (pero parang wala na ih).</p>
+
+        <div class="card-container">
+            <div class="card plan-card"><div class="plan-icon">☕</div><h3>Coffee Date</h3><p>Slow mornings and long conversations.</p></div>
+            <div class="card plan-card"><div class="plan-icon">🎬</div><h3>Movie Night</h3><p>One movie... or five. NYAHAHAHA.</p></div>
+            <div class="card plan-card"><div class="plan-icon">🌅</div><h3>Watch the Sunset</h3><p>Sitting together and enjoying the view.</p></div>
+            <div class="card plan-card"><div class="plan-icon">🍜</div><h3>Food Trip</h3><p>Trying every food and finding new favorites together.</p></div>
+            <div class="card plan-card"><div class="plan-icon">🎮</div><h3>Game Together</h3><p>Even if we end up arguing over the game.</p></div>
+            <div class="card plan-card"><div class="plan-icon">📸</div><h3>More Pictures</h3><p>Because three pictures will never be enough.</p></div>
+            <div class="card plan-card"><div class="plan-icon">✈️</div><h3>Travel Somewhere</h3><p>A new place, a new story, us together.</p></div>
+            <div class="card plan-card"><div class="plan-icon">🌧️</div><h3>Rainy Day</h3><p>Stay in, listen to music, and just be together.</p></div>
+        </div>
+    </section>
+
+    <!-- ================= LOVE LETTER ================= -->
+    <section id="letter" class="reveal">
+        <span class="section-tag">From My Heart 💌</span>
+        <h1>A letter for you</h1>
+        <p class="picture-subtitle">Some things are easier to say when written down.</p>
+
+        <div class="letter-paper">
+            <p>Dear Leigh,</p>
+            <p>
+                Hindi ko talaga alam kung paano ko sisimulan 'to nang hindi
+                nagiging cheesy, pero gusto ko lang sabihin na sobrang thankful
+                ako na nakilala kita.
+            </p>
+            <p>
+                Ginawa ko 'tong website na 'to hindi dahil kailangan kong gumawa
+                ng something fancy, pero dahil gusto ko lang magkaroon tayo ng
+                maliit na place na nandito yung mga pictures, songs, memories,
+                at mga bagay na nagpapaalala sa akin sa'yo.
+            </p>
+            <p>
+                Hindi naman palaging perfect yung mga araw natin. May times na
+                nagkakainisan tayo, may misunderstandings, at minsan wala rin
+                tayong masyadong mapag-usapan. Pero kahit ganun, ikaw pa rin yung
+                taong gusto kong kausap at kasama.
+            </p>
+            <p>
+                Salamat sa lahat ng little things na ginagawa mo, kahit minsan
+                hindi ko nasasabi. Salamat sa patience mo, sa mga tawa, sa mga
+                random moments, at sa pagiging ikaw. Baka hindi ko laging
+                maipakita nang maayos, pero I really appreciate you more than
+                you probably know.
+            </p>
+            <p>
+                Hindi ko alam kung ano exactly ang mangyayari sa future, pero
+                habang nandito tayo, gusto kong sulitin natin yung time natin.
+                More pictures, more food trips, more random conversations, more
+                memories na balang araw babalikan natin at matatawa tayo.
+            </p>
+            <p>
+                I love you. Simple lang, pero yun talaga yung gusto kong sabihin.
+                And if I ever forget to say it, sana itong little website na 'to
+                yung mag-remind sa'yo.
+            </p>
+            <p class="letter-sign">Love, always. 💜</p>
+        </div>
+    </section>
+
+
+    <!-- ================= GIFTS ================= -->
+    <section id="gift-section" class="reveal">
+        <span class="section-tag">A Little Something 🎁</span>
+        <h1>Gifts just for you lei</h1>
+        <p class="gift-subtitle">Don't peek too early... may iba't ibang gift yan nyahahaha. 💜</p>
+        <div class="gifts-grid">
+            <button type="button" class="gift-card" onclick="openGift('bouquet')"><div class="gift-box"><div class="gift-lid"></div><div class="gift-ribbon-v"></div><div class="gift-ribbon-h"></div><div class="gift-bow"></div></div><h3>Gift 1</h3><p></p><p class="gift-hint">Click to open</p></button>
+            <button type="button" class="gift-card" onclick="openGift('teddy')"><div class="gift-box"><div class="gift-lid"></div><div class="gift-ribbon-v"></div><div class="gift-ribbon-h"></div><div class="gift-bow"></div></div><h3>Gift 2</h3><p></p><p class="gift-hint">Click to open</p></button>
+            <button type="button" class="gift-card" onclick="openGift('choco')"><div class="gift-box"><div class="gift-lid"></div><div class="gift-ribbon-v"></div><div class="gift-ribbon-h"></div><div class="gift-bow"></div></div><h3>Gift 3</h3><p></p><p class="gift-hint">Click to open</p></button>
+        </div>
+    </section>
+
+    <!-- ================= REASONS ================= -->
+
+    <section id="reasons" class="reveal">
+
+        <h1>
+            100 Reasons Why I Chose You 💜
+        </h1>
+
+        <p class="reasons-subtitle">
+            100 reasons why you're the one I chose and why I love you.
+        </p>
+
+
+        <div class="reasons-container">
+
+            <div class="reason"><span class="reason-number">1.</span> Because you make me genuinely happy.</div>
+            <div class="reason"><span class="reason-number">2.</span> Because you make ordinary days feel special.</div>
+            <div class="reason"><span class="reason-number">3.</span> Because I love your smile.</div>
+            <div class="reason"><span class="reason-number">4.</span> Because I love the way you laugh.</div>
+            <div class="reason"><span class="reason-number">5.</span> Because you make me laugh even when I don't feel like it.</div>
+            <div class="reason"><span class="reason-number">6.</span> Because I can be myself around you.</div>
+            <div class="reason"><span class="reason-number">7.</span> Because you understand me.</div>
+            <div class="reason"><span class="reason-number">8.</span> Because you listen to me.</div>
+            <div class="reason"><span class="reason-number">9.</span> Because you make me feel appreciated.</div>
+            <div class="reason"><span class="reason-number">10.</span> Because you make me feel loved.</div>
+
+            <div class="reason"><span class="reason-number">11.</span> Because you are special to me.</div>
+            <div class="reason"><span class="reason-number">12.</span> Because you are someone I don't want to lose.</div>
+            <div class="reason"><span class="reason-number">13.</span> Because you have a beautiful personality.</div>
+            <div class="reason"><span class="reason-number">14.</span> Because you have your own way of making things better.</div>
+            <div class="reason"><span class="reason-number">15.</span> Because you make me smile without even trying.</div>
+            <div class="reason"><span class="reason-number">16.</span> Because talking to you never gets boring.</div>
+            <div class="reason"><span class="reason-number">17.</span> Because I enjoy every moment with you.</div>
+            <div class="reason"><span class="reason-number">18.</span> Because you make me excited for tomorrow.</div>
+            <div class="reason"><span class="reason-number">19.</span> Because you are worth choosing every day.</div>
+            <div class="reason"><span class="reason-number">20.</span> Because you are worth loving.</div>
+
+            <div class="reason"><span class="reason-number">21.</span> Because I love your little habits.</div>
+            <div class="reason"><span class="reason-number">22.</span> Because even your teasing makes me smile.</div>
+            <div class="reason"><span class="reason-number">23.</span> Because you know how to make me laugh.</div>
+            <div class="reason"><span class="reason-number">24.</span> Because you make me feel comfortable.</div>
+            <div class="reason"><span class="reason-number">25.</span> Because you are someone I can trust.</div>
+            <div class="reason"><span class="reason-number">26.</span> Because you make me feel understood.</div>
+            <div class="reason"><span class="reason-number">27.</span> Because I love hearing your stories.</div>
+            <div class="reason"><span class="reason-number">28.</span> Because I love spending time with you.</div>
+            <div class="reason"><span class="reason-number">29.</span> Because you make memories more meaningful.</div>
+            <div class="reason"><span class="reason-number">30.</span> Because you are one of my favorite people.</div>
+
+            <div class="reason"><span class="reason-number">31.</span> Because you bring happiness into my life.</div>
+            <div class="reason"><span class="reason-number">32.</span> Because you make me want to become better.</div>
+            <div class="reason"><span class="reason-number">33.</span> Because you inspire me.</div>
+            <div class="reason"><span class="reason-number">34.</span> Because you make me feel lucky.</div>
+            <div class="reason"><span class="reason-number">35.</span> Because I love your presence.</div>
+            <div class="reason"><span class="reason-number">36.</span> Because even silence with you feels comfortable.</div>
+            <div class="reason"><span class="reason-number">37.</span> Because you make my heart feel lighter.</div>
+            <div class="reason"><span class="reason-number">38.</span> Because you make me look forward to talking to you.</div>
+            <div class="reason"><span class="reason-number">39.</span> Because I love the way you care.</div>
+            <div class="reason"><span class="reason-number">40.</span> Because you are naturally lovable.</div>
+
+            <div class="reason"><span class="reason-number">41.</span> Because you are uniquely you.</div>
+            <div class="reason"><span class="reason-number">42.</span> Because I don't need a reason to smile when I'm with you.</div>
+            <div class="reason"><span class="reason-number">43.</span> Because you make me feel special.</div>
+            <div class="reason"><span class="reason-number">44.</span> Because you make little things memorable.</div>
+            <div class="reason"><span class="reason-number">45.</span> Because I love your personality.</div>
+            <div class="reason"><span class="reason-number">46.</span> Because I love your energy.</div>
+            <div class="reason"><span class="reason-number">47.</span> Because you make me feel at home.</div>
+            <div class="reason"><span class="reason-number">48.</span> Because I can share random things with you.</div>
+            <div class="reason"><span class="reason-number">49.</span> Because you never fail to make things interesting.</div>
+            <div class="reason"><span class="reason-number">50.</span> Because halfway to 100 isn't enough to describe you.</div>
+
+            <div class="reason"><span class="reason-number">51.</span> Because I love the way you express yourself.</div>
+            <div class="reason"><span class="reason-number">52.</span> Because your happiness matters to me.</div>
+            <div class="reason"><span class="reason-number">53.</span> Because your dreams matter to me.</div>
+            <div class="reason"><span class="reason-number">54.</span> Because I want to support you.</div>
+            <div class="reason"><span class="reason-number">55.</span> Because I want to see you succeed.</div>
+            <div class="reason"><span class="reason-number">56.</span> Because I want to see you happy.</div>
+            <div class="reason"><span class="reason-number">57.</span> Because you deserve genuine love.</div>
+            <div class="reason"><span class="reason-number">58.</span> Because you deserve someone who chooses you.</div>
+            <div class="reason"><span class="reason-number">59.</span> Because I want to be there for you.</div>
+            <div class="reason"><span class="reason-number">60.</span> Because I care about you deeply.</div>
+
+            <div class="reason"><span class="reason-number">61.</span> Because I love your imperfections too.</div>
+            <div class="reason"><span class="reason-number">62.</span> Because you don't have to be perfect for me to love you.</div>
+            <div class="reason"><span class="reason-number">63.</span> Because I love you as you are.</div>
+            <div class="reason"><span class="reason-number">64.</span> Because you are more than enough.</div>
+            <div class="reason"><span class="reason-number">65.</span> Because you make my life more colorful.</div>
+            <div class="reason"><span class="reason-number">66.</span> Because you give me something to look forward to.</div>
+            <div class="reason"><span class="reason-number">67.</span> Because you make my heart happy.</div>
+            <div class="reason"><span class="reason-number">68.</span> Because I love your random side.</div>
+            <div class="reason"><span class="reason-number">69.</span> Because I love your funny side.</div>
+            <div class="reason"><span class="reason-number">70.</span> Because I love your caring side.</div>
+
+            <div class="reason"><span class="reason-number">71.</span> Because you make me feel important.</div>
+            <div class="reason"><span class="reason-number">72.</span> Because you make me want to give my best.</div>
+            <div class="reason"><span class="reason-number">73.</span> Because you are someone I want beside me.</div>
+            <div class="reason"><span class="reason-number">74.</span> Because I enjoy getting to know you more.</div>
+            <div class="reason"><span class="reason-number">75.</span> Because every side of you is interesting.</div>
+            <div class="reason"><span class="reason-number">76.</span> Because I love discovering new things about you.</div>
+            <div class="reason"><span class="reason-number">77.</span> Because you make me appreciate the little things.</div>
+            <div class="reason"><span class="reason-number">78.</span> Because you make me believe in something special.</div>
+            <div class="reason"><span class="reason-number">79.</span> Because my feelings for you are genuine.</div>
+            <div class="reason"><span class="reason-number">80.</span> Because choosing you feels right.</div>
+
+            <div class="reason"><span class="reason-number">81.</span> Because my heart chose you.</div>
+            <div class="reason"><span class="reason-number">82.</span> Because you are the person I want to make memories with.</div>
+            <div class="reason"><span class="reason-number">83.</span> Because you make love feel special.</div>
+            <div class="reason"><span class="reason-number">84.</span> Because I love the way you make me feel.</div>
+            <div class="reason"><span class="reason-number">85.</span> Because I never want you to doubt your worth.</div>
+            <div class="reason"><span class="reason-number">86.</span> Because you deserve to know how special you are.</div>
+            <div class="reason"><span class="reason-number">87.</span> Because I want to remind you that you are loved.</div>
+            <div class="reason"><span class="reason-number">88.</span> Because you are someone worth fighting for.</div>
+            <div class="reason"><span class="reason-number">89.</span> Because you are someone worth keeping.</div>
+            <div class="reason"><span class="reason-number">90.</span> Because you make my heart choose you again and again.</div>
+
+            <div class="reason"><span class="reason-number">91.</span> Because you are my favorite person to annoy and love.</div>
+            <div class="reason"><span class="reason-number">92.</span> Because even your little quirks make me love you more.</div>
+            <div class="reason"><span class="reason-number">93.</span> Because you make every memory feel special.</div>
+            <div class="reason"><span class="reason-number">94.</span> Because I want to keep making memories with you.</div>
+            <div class="reason"><span class="reason-number">95.</span> Because I want to see where our story goes.</div>
+            <div class="reason"><span class="reason-number">96.</span> Because you are someone I sincerely care about.</div>
+            <div class="reason"><span class="reason-number">97.</span> Because I chose you with my whole heart.</div>
+            <div class="reason"><span class="reason-number">98.</span> Because loving you feels natural.</div>
+            <div class="reason"><span class="reason-number">99.</span> Because after all these reasons, I'd still choose you.</div>
+            <div class="reason"><span class="reason-number">100.</span> Because at the end of everything, ikaw pa rin ang pipiliin ko. I love you, Leigh. 💜</div>
+
+        </div>
+
+    </section>
+
+
+
+
+    <!-- ================= SECRET SURPRISE ================= -->
+    <section id="surprise" class="reveal">
+        <div class="surprise-box">
+            <span class="section-tag">One More Thing 🎁</span>
+            <h1>There's Something Hidden For You</h1>
+            <p>You've already seen 100 reasons... but I kept one little surprise.</p>
+            <button class="surprise-btn" onclick="showSurprise()">Open the Surprise 🎁</button>
+
+            <div id="surprise-message" class="surprise-message">
+                <div class="big-heart">💜</div>
+                <h2>If I had to choose again...</h2>
+                <p>
+                    I would still choose you. Not because everything is perfect,
+                    but because you're the person I want beside me while we make
+                    our own imperfect, funny, beautiful memories.
+                </p>
+                <p style="margin-top:15px;"><strong>Ikaw pa rin. Always. 💜</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= FINAL MESSAGE ================= -->
+    <section id="final" class="reveal">
+        <span class="section-tag">The End... Or Maybe Not 💜</span>
+        <h1>And if you asked me for 101 Reasons...</h1>
+        <p class="final-line">
+            I don't need 101 reasons. I only need one reason
+            <strong>and that is you.</strong>
+        </p>
+        <p class="final-choice">Araw araw kang pipiliin nyahahaha. 💜</p>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <p>
+            Made with love for only you leigh 💜
+        </p>
+
+    </footer>
+
+
+
+
+<!-- GIFT MODAL -->
+<div id="gift-modal" class="gift-modal" onclick="closeGift(event)">
+  <div class="gift-modal-box" onclick="event.stopPropagation()">
+    <button type="button" class="gift-close" aria-label="Close gift" onclick="document.getElementById('gift-modal').classList.remove('show');document.body.style.overflowY='auto';">×</button>
+    <div id="gift-content"></div>
+  </div>
+</div>
+<script>
+/* ================= OPENING ================= */
+function openWebsite() {
+    document.getElementById("opening-screen").classList.add("hidden");
+    document.body.style.overflowY = "auto";
+    setTimeout(() => createHeartBurst(14), 350);
+}
+document.body.style.overflowY = "hidden";
+
+/* ================= SCROLL REVEAL ================= */
+const revealItems = document.querySelectorAll(".reveal");
+const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add("show");
+    });
+}, { threshold: 0.12 });
+revealItems.forEach(item => revealObserver.observe(item));
+
+/* ================= SCROLL PROGRESS ================= */
+window.addEventListener("scroll", () => {
+    const scrollTop = window.scrollY;
+    const height = document.documentElement.scrollHeight - window.innerHeight;
+    document.getElementById("scroll-progress").style.width =
+        (height > 0 ? scrollTop / height * 100 : 0) + "%";
+});
+
+/* ================= RELATIONSHIP COUNTER ================= */
+/* CHANGE THIS DATE TO YOUR SPECIAL DATE: YYYY-MM-DDTHH:MM:SS */
+const specialDate = new Date("2025-01-01T00:00:00");
+
+function updateCounter() {
+    const now = new Date();
+    let diff = now - specialDate;
+    if (diff < 0) diff = 0;
+
+    const totalSeconds = Math.floor(diff / 1000);
+    const days = Math.floor(totalSeconds / 86400);
+    const hours = Math.floor((totalSeconds % 86400) / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const seconds = totalSeconds % 60;
+
+    document.getElementById("days").textContent = days;
+    document.getElementById("hours").textContent = String(hours).padStart(2, "0");
+    document.getElementById("minutes").textContent = String(minutes).padStart(2, "0");
+    document.getElementById("seconds").textContent = String(seconds).padStart(2, "0");
+}
+updateCounter();
+setInterval(updateCounter, 1000);
+
+/* ================= SURPRISE ================= */
+function showSurprise() {
+    document.getElementById("surprise-message").classList.add("open");
+    createHeartBurst(25);
+}
+
+/* ================= HEART PARTICLES ================= */
+function createHeartBurst(count = 8) {
+    const hearts = ["💜","💗","💕","💖","✨"];
+    for (let i = 0; i < count; i++) {
+        const heart = document.createElement("div");
+        heart.className = "floating-heart";
+        heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = (14 + Math.random() * 20) + "px";
+        heart.style.animationDuration = (3 + Math.random() * 2) + "s";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 5500);
+    }
+}
+
+/* occasional subtle hearts */
+setInterval(() => {
+    if (!document.getElementById("opening-screen").classList.contains("hidden")) return;
+    if (Math.random() < .7) createHeartBurst(1);
+}, 3500);
+
+/* ================= FOUR GIFTS ================= */
+function openGift(type){
+    const modal=document.getElementById("gift-modal"), content=document.getElementById("gift-content");
+    const gifts={
+        bouquet:{title:"A Realistic Bouquet Just For You 🌷",text:"If I could hand this to you right now, I would.",html:`<div class="real-bouquet">
+<svg viewBox="0 0 560 420" role="img" aria-label="Realistic style bouquet of pink roses and purple flowers">
+<defs>
+ <radialGradient id="rosePetal" cx="35%" cy="25%"><stop offset="0" stop-color="#fff4f7"/><stop offset=".28" stop-color="#ffb0c9"/><stop offset=".68" stop-color="#e85a88"/><stop offset="1" stop-color="#9f2455"/></radialGradient>
+ <radialGradient id="roseDark" cx="50%" cy="45%"><stop offset="0" stop-color="#ffd8e4"/><stop offset=".5" stop-color="#d83e72"/><stop offset="1" stop-color="#7b1745"/></radialGradient>
+ <radialGradient id="lilacPetal" cx="35%" cy="25%"><stop offset="0" stop-color="#fff"/><stop offset=".35" stop-color="#e6b9ff"/><stop offset=".75" stop-color="#a75ed0"/><stop offset="1" stop-color="#5d287e"/></radialGradient>
+ <linearGradient id="stemGrad" x1="0" x2="1"><stop stop-color="#234e32"/><stop offset=".5" stop-color="#4f8a4e"/><stop offset="1" stop-color="#183d29"/></linearGradient>
+ <linearGradient id="paperGrad" x1="0" x2="1"><stop stop-color="#f6d8f0"/><stop offset=".45" stop-color="#c16bb5"/><stop offset="1" stop-color="#702b78"/></linearGradient>
+ <radialGradient id="bouquetGlow"><stop stop-color="#f4a8ee"/><stop offset="1" stop-color="#f4a8ee" stop-opacity="0"/></radialGradient>
+ <filter id="soft"><feGaussianBlur stdDeviation="2"/></filter>
+ <!-- reusable rose -->
+ <g id="rose">
+   <ellipse cx="0" cy="-18" rx="19" ry="34" fill="url(#rosePetal)" transform="rotate(-28)"/>
+   <ellipse cx="0" cy="-18" rx="19" ry="34" fill="url(#rosePetal)" transform="rotate(28)"/>
+   <ellipse cx="0" cy="-18" rx="19" ry="34" fill="url(#rosePetal)" transform="rotate(88)"/>
+   <ellipse cx="0" cy="-18" rx="19" ry="34" fill="url(#rosePetal)" transform="rotate(148)"/>
+   <ellipse cx="0" cy="-18" rx="19" ry="34" fill="url(#rosePetal)" transform="rotate(208)"/>
+   <ellipse cx="0" cy="-13" rx="15" ry="28" fill="url(#roseDark)" transform="rotate(-42)"/>
+   <ellipse cx="0" cy="-12" rx="15" ry="27" fill="url(#roseDark)" transform="rotate(42)"/>
+   <ellipse cx="0" cy="-8" rx="10" ry="19" fill="url(#rosePetal)" transform="rotate(88)"/>
+   <circle cx="0" cy="0" r="7" fill="#a41d52"/>
+ </g>
+ <g id="lilac">
+   <circle cx="0" cy="-24" r="12" fill="url(#lilacPetal)"/>
+   <circle cx="23" cy="-10" r="12" fill="url(#lilacPetal)"/>
+   <circle cx="14" cy="17" r="12" fill="url(#lilacPetal)"/>
+   <circle cx="-14" cy="17" r="12" fill="url(#lilacPetal)"/>
+   <circle cx="-23" cy="-10" r="12" fill="url(#lilacPetal)"/>
+   <circle cx="0" cy="0" r="10" fill="#8b45b0"/>
+   <circle cx="-4" cy="-4" r="2.5" fill="#fff1ff"/><circle cx="5" cy="-2" r="2.5" fill="#fff1ff"/>
+ </g>
+</defs>
+<ellipse class="bouquet-glow" cx="280" cy="180" rx="205" ry="165" filter="url(#soft)"/>
+<!-- stems -->
+<g fill="none" stroke="url(#stemGrad)" stroke-width="7" stroke-linecap="round">
+ <path d="M205 145 Q250 245 276 348"/><path d="M270 110 Q285 225 286 350"/>
+ <path d="M335 135 Q315 235 298 350"/><path d="M390 168 Q340 260 312 350"/>
+ <path d="M170 190 Q235 270 270 350"/><path d="M360 200 Q330 270 300 350"/>
+</g>
+<!-- leaves -->
+<g fill="#3f7b43" stroke="#245532" stroke-width="2">
+ <path d="M226 254 Q183 228 175 257 Q199 275 226 254Z"/><path d="M247 286 Q205 270 198 299 Q221 311 247 286Z"/>
+ <path d="M330 260 Q377 233 382 264 Q356 280 330 260Z"/><path d="M318 295 Q359 274 365 304 Q340 317 318 295Z"/>
+ <path d="M275 235 Q242 204 238 230 Q253 247 275 235Z"/><path d="M300 222 Q336 193 341 220 Q323 239 300 222Z"/>
+</g>
+<!-- flowers -->
+<g transform="translate(205 125) scale(1.05)"><use href="#rose"/></g>
+<g transform="translate(282 92) scale(1.18)"><use href="#rose"/></g>
+<g transform="translate(358 132) scale(1.02)"><use href="#rose"/></g>
+<g transform="translate(170 177) scale(.82)"><use href="#lilac"/></g>
+<g transform="translate(246 165) scale(.82)"><use href="#lilac"/></g>
+<g transform="translate(329 166) scale(.88)"><use href="#lilac"/></g>
+<g transform="translate(395 184) scale(.76)"><use href="#rose"/></g>
+<!-- wrap -->
+<path d="M160 300 Q280 330 400 300 L365 412 Q280 390 195 412Z" fill="url(#paperGrad)" stroke="#8d478e" stroke-width="3"/>
+<path d="M180 308 Q280 340 380 308" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="4"/>
+<path d="M280 322 L280 397" stroke="rgba(255,255,255,.32)" stroke-width="5"/>
+<path d="M205 345 Q280 365 355 345" fill="none" stroke="rgba(255,255,255,.18)" stroke-width="3"/>
+<!-- ribbon -->
+<path d="M250 315 Q215 288 192 307 Q220 337 256 326Z" fill="#f4b4e5"/>
+<path d="M310 315 Q345 288 368 307 Q340 337 304 326Z" fill="#f4b4e5"/>
+<circle cx="280" cy="319" r="15" fill="#d05ab8" stroke="#fff" stroke-opacity=".45" stroke-width="3"/>
+</svg>
+</div><p class="bouquet-note">A pink roses, purple flowers, and a little bit of love for you po. 💜</p>`},
+        teddy:{title:"A Little Teddy For You 🧸",text:"For the days when I can't be there to give you a hug.",html:`<div class="teddy-art">🧸</div><p class="bouquet-note">Hug mo lang kapag namimiss mo ako hehe. 🤍</p>`},
+        choco:{title:"Coco Milk Tea + Potato Corner 🍟🧋",text:"Because this is the kind of date-night combo I would happily get for you.",html:`<div class="food-gift"><div class="coco-cup"><div class="straw"></div><span class="pearl p1"></span><span class="pearl p2"></span><span class="pearl p3"></span><span class="pearl p4"></span></div><div class="fries-box"><span class="fries f1"></span><span class="fries f2"></span><span class="fries f3"></span><span class="fries f4"></span><span class="fries f5"></span><span class="fries f6"></span></div></div><p class="bouquet-note">Coco Milk Tea + Potato Corner fries. Perfect combo, lalo na kung sabay natin kakainin. 💜</p>`},
+        perfume:{title:"Zhuxin ✨",text:"For my favorite mage — the Beacon of Spirits.",html:`<div class="zhuxin-card"><img src="https://media.esports.gg/uploads/2024/06/New-MLBB-hero-Zhuxin-release-date.jpg" alt="Zhuxin from Mobile Legends: Bang Bang" loading="lazy"><div class="zhuxin-name">ZHUXIN</div><div class="zhuxin-role">Mobile Legends: Bang Bang • Beacon of Spirits</div></div><p class="bouquet-note">A little Zhuxin surprise for you. 🦋💜</p>`}
+    };
+    const gift=gifts[type]; content.innerHTML=`<h2 class="gift-modal-title">${gift.title}</h2><p class="gift-modal-text">${gift.text}</p>${gift.html}`;
+    modal.classList.add("show"); document.body.style.overflow="hidden"; createHeartBurst(12);
+}
+function closeGift(event){if(event && event.target!==document.getElementById("gift-modal")) return;document.getElementById("gift-modal").classList.remove("show");document.body.style.overflowY="auto";}
+document.addEventListener("keydown",e=>{if(e.key==="Escape") closeGift();});
+</script>
+
+
+
+
+
+
+<script>
+/* ================= LOVE MAZE GAME ================= */
+(function () {
+    const mazeEl = document.getElementById('loveMaze');
+    const statusEl = document.getElementById('mazeStatus');
+    const resetBtn = document.getElementById('mazeReset');
+    const notification = document.getElementById('loveNotification');
+    const closeNotification = document.getElementById('closeLoveNotification');
+
+    if (!mazeEl) return;
+
+    // 0 = open path, 1 = wall
+    const maze = [
+        [0,0,1,0,0,0,1,0,0,0],
+        [1,0,1,0,1,0,1,0,1,0],
+        [0,0,0,0,1,0,0,0,1,0],
+        [0,1,1,1,1,1,1,0,1,0],
+        [0,0,0,0,0,0,1,0,1,0],
+        [1,1,1,1,1,0,1,0,1,0],
+        [0,0,0,0,1,0,1,0,0,0],
+        [0,1,1,0,1,0,1,1,1,0],
+        [0,0,1,0,0,0,0,0,1,0],
+        [1,0,1,1,1,1,1,0,0,0]
+    ];
+
+    const start = { row: 0, col: 0 };
+    const goal = { row: 9, col: 9 };
+    let player = { ...start };
+    let finished = false;
+    let moves = 0;
+
+    function renderMaze() {
+        mazeEl.innerHTML = '';
+
+        for (let row = 0; row < maze.length; row++) {
+            for (let col = 0; col < maze[row].length; col++) {
+                const cell = document.createElement('div');
+                cell.className = 'maze-cell';
+
+                if (maze[row][col] === 1) {
+                    cell.classList.add('maze-wall');
+                    cell.textContent = '🟪';
+                } else if (row === player.row && col === player.col) {
+                    cell.classList.add('maze-player');
+                    cell.textContent = '👦';
+                } else if (row === goal.row && col === goal.col) {
+                    cell.classList.add('maze-goal');
+                    cell.textContent = '👧';
+                }
+
+                mazeEl.appendChild(cell);
+            }
+        }
+    }
+
+    function movePlayer(rowChange, colChange) {
+        if (finished) return;
+
+        const newRow = player.row + rowChange;
+        const newCol = player.col + colChange;
+
+        if (
+            newRow < 0 || newRow >= maze.length ||
+            newCol < 0 || newCol >= maze[0].length ||
+            maze[newRow][newCol] === 1
+        ) {
+            statusEl.textContent = 'Oops! May wall dyan 😭 Try another way.';
+            return;
+        }
+
+        player.row = newRow;
+        player.col = newCol;
+        moves++;
+        renderMaze();
+
+        if (player.row === goal.row && player.col === goal.col) {
+            finished = true;
+            statusEl.textContent = 'You found her! 💜';
+            notification.classList.add('show');
+        } else {
+            statusEl.textContent = 'Keep going... malapit ka na. 💜 Moves: ' + moves;
+        }
+    }
+
+    function resetMaze() {
+        player = { ...start };
+        finished = false;
+        moves = 0;
+        notification.classList.remove('show');
+        statusEl.textContent = 'Use WASD or the arrow keys. 💜';
+        renderMaze();
+    }
+
+    document.addEventListener('keydown', function (event) {
+        const key = event.key.toLowerCase();
+        const directions = {
+            arrowup: [-1, 0], w: [-1, 0],
+            arrowdown: [1, 0], s: [1, 0],
+            arrowleft: [0, -1], a: [0, -1],
+            arrowright: [0, 1], d: [0, 1]
+        };
+
+        if (directions[key]) {
+            event.preventDefault();
+            movePlayer(directions[key][0], directions[key][1]);
+        }
+    });
+
+    document.querySelectorAll('.maze-control-btn').forEach(function (button) {
+        button.addEventListener('click', function () {
+            const dir = button.dataset.dir;
+            const directions = {
+                up: [-1, 0], down: [1, 0],
+                left: [0, -1], right: [0, 1]
+            };
+            movePlayer(directions[dir][0], directions[dir][1]);
+        });
+    });
+
+    resetBtn.addEventListener('click', resetMaze);
+    closeNotification.addEventListener('click', function () {
+        notification.classList.remove('show');
+    });
+
+    notification.addEventListener('click', function (event) {
+        if (event.target === notification) notification.classList.remove('show');
+    });
+
+    renderMaze();
+})();
+</script>
+<!-- ================= BACKGROUND MUSIC ================= -->
+<audio id="bgMusic" loop preload="auto">
+    <source src="./Always Be My  Baby -  David Cook (Lyrics).mp3" type="audio/mpeg">
+</audio>
+
+<script>
+(function () {
+    const bgMusic = document.getElementById('bgMusic');
+    const mainSong = document.getElementById('mainSong');
+    const openButton = document.querySelector('.open-btn');
+
+    if (!bgMusic || !mainSong) return;
+
+    // Start the background song after the user opens the website.
+    if (openButton) {
+        openButton.addEventListener('click', function () {
+            bgMusic.volume = 0.35;
+            bgMusic.play().catch(() => {});
+        });
+    }
+
+    // When "Her" is played, stop the background music.
+    mainSong.addEventListener('play', function () {
+        bgMusic.pause();
+    });
+
+    // When "Her" is paused/stopped, bring the background music back.
+    mainSong.addEventListener('pause', function () {
+        if (!mainSong.ended) {
+            bgMusic.play().catch(() => {});
+        }
+    });
+
+    // If "Her" reaches the end, resume the background music.
+    mainSong.addEventListener('ended', function () {
+        bgMusic.play().catch(() => {});
+    });
+})();
+</script>
+<script id="memory-gallery-script">
+(function () {
+  function initGallery() {
+    const gallery = document.querySelector('#our-time .memory-gallery');
+    if (!gallery || gallery.dataset.initialized === 'yes') return;
+    gallery.dataset.initialized = 'yes';
+    const slides = Array.from(gallery.querySelectorAll('.memory-slide'));
+    const dots = gallery.querySelector('#memoryDots');
+    const counter = gallery.querySelector('#memoryCount');
+    const stage = gallery.querySelector('#memoryWindow');
+    if (!slides.length || !dots || !counter || !stage) return;
+    let index = 0, timer = null, touchX = 0;
+    dots.innerHTML = '';
+    slides.forEach((_, n) => {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'memory-dot';
+      dot.setAttribute('aria-label', 'Show photo ' + (n + 1));
+      dot.addEventListener('click', () => show(n));
+      dots.appendChild(dot);
+    });
+    const dotButtons = Array.from(dots.children);
+    function show(n, resetTimer = true) {
+      index = (n + slides.length) % slides.length;
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === index);
+        slide.setAttribute('aria-hidden', String(i !== index));
+      });
+      dotButtons.forEach((dot, i) => {
+        dot.classList.toggle('active', i === index);
+        dot.setAttribute('aria-current', String(i === index));
+      });
+      counter.textContent = String(index + 1).padStart(2, '0') + ' / ' + String(slides.length).padStart(2, '0');
+      if (resetTimer) startTimer();
+    }
+    function startTimer() {
+      if (timer !== null) clearInterval(timer);
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        timer = setInterval(() => show(index + 1, false), 6500);
+      }
+    }
+    gallery.querySelector('#memoryPrev').addEventListener('click', (e) => { e.preventDefault(); show(index - 1); });
+    gallery.querySelector('#memoryNext').addEventListener('click', (e) => { e.preventDefault(); show(index + 1); });
+    stage.addEventListener('touchstart', e => { touchX = e.changedTouches[0].screenX; }, {passive:true});
+    stage.addEventListener('touchend', e => {
+      const delta = e.changedTouches[0].screenX - touchX;
+      if (Math.abs(delta) > 40) show(index + (delta < 0 ? 1 : -1));
+    }, {passive:true});
+    gallery.addEventListener('keydown', e => {
+      if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+        e.preventDefault(); show(index + (e.key === 'ArrowRight' ? 1 : -1));
+      }
+    });
+    show(0);
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initGallery);
+  else initGallery();
+})();
+</script>
+</body>
+</html>
